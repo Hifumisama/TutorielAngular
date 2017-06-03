@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+<h2>Liste des héros</h2>
+<ul class="heroes">
+  <!-- ici on a bindé un évènement au template, ici  l'évènement
+   va se déclencher à la sélection d'un des éléments de la liste
+   la variable entre parenthèses indique que la cible de l'évènement, ici la
+   balise "li" est conservé dedans.
+  -->
+  <li *ngFor="let hero of heroes"
+  [class.selected]="hero === selectedHero"
+  (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!-- ici on place un ngIf pour gérer le cas où on a sélectionné aucun héros
+dans ce cas donc on n'affiche pas ce qui est entre les divs -->
+<div *ngIf="selectedHero">
+<h2>Détail de {{selectedHero.name }}</h2>
+<div><label>Identifiant :</label> {{selectedHero.id}}</div>
+<div>
+    <label>Nom :</label>
+    <!-- le ngModel est une directive permettant d'interagir avec
+    le module de formulaire. Pour faire simple, il faut simplement
+    comprendre ici  que ngModel permet de récupérer le contenu de l'input
+    envoyé par l'utilisateur -->
+    <input [(ngModel)] = "selectedHero.name" placeholder="Nom"/>
+</div>
+</div>
