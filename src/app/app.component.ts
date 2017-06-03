@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
-
-// ici on a créé une classe permettant de stocker les noms
-//et Ids des héros
-
-export class Hero {
-  id: number;
-  name: string;
-}
+import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
+import { Hero } from './shared-elements/hero';
 
 // là on a créé un tableau contenant 10 instances de la classe
 // Hero contenant nos données
-//
+
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
   { id: 12, name: 'Narco' },

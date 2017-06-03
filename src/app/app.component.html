@@ -6,24 +6,32 @@
    la variable entre parenthèses indique que la cible de l'évènement, ici la
    balise "li" est conservé dedans.
   -->
+
+  <!-- Si la variable hero est égale à "selectedHero", alors on attribue
+   à la balise la class .selected . Voila ce que fait la ligne suivante :
+  [class.selected]="hero === selectedHero" -->
+
+  <!-- C'est aussi très intéressant de voir comment fonctionne le data binding.
+On y constate ici 2 types de data binding :
+- Ceux avec les Brackets "[]", qui permettent d'affecter au DOM
+ une valeur des classes, ou d'angular. A noter que c'est justement pratique pour
+les inputs (avec le hero-detail) car cela peut être récupéré à son tour dans les
+composants. On est donc dans un sens Propriété -> DOM
+- Ceux avec les Parenthèses '()', Dans ce cas on cherche à capter les
+ modifications du DOM, pour interagir avec les composants. Pour cela on va placer
+le nom de l'évènement  à capter entre parenthèses,
+puis on va pouvoir ensuite activer une fonction prévue dans le composant.
+Grâce à cela on va également pouvoir émettre des valeurs aux composants parents.
+-->
   <li *ngFor="let hero of heroes"
   [class.selected]="hero === selectedHero"
   (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
-
-<!-- ici on place un ngIf pour gérer le cas où on a sélectionné aucun héros
-dans ce cas donc on n'affiche pas ce qui est entre les divs -->
-<div *ngIf="selectedHero">
-<h2>Détail de {{selectedHero.name }}</h2>
-<div><label>Identifiant :</label> {{selectedHero.id}}</div>
-<div>
-    <label>Nom :</label>
-    <!-- le ngModel est une directive permettant d'interagir avec
-    le module de formulaire. Pour faire simple, il faut simplement
-    comprendre ici  que ngModel permet de récupérer le contenu de l'input
-    envoyé par l'utilisateur -->
-    <input [(ngModel)] = "selectedHero.name" placeholder="Nom"/>
-</div>
-</div>
+<!-- Là on indique où se trouve le détail des héros, avec la balise associée.
+On remarque aussi que la balise accepte une entrée,
+donc on peut y faire passer des valeurs, dans notre cas il s'agit de la variable
+"hero" qui est fournie pour notre composant
+ -->
+<hero-detail [hero]="selectedHero"></hero-detail>

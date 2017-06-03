@@ -6,9 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
+var platform_browser_1 = require("@angular/platform-browser");
+var hero_detail_component_1 = require("./hero-detail/hero-detail.component");
+var app_component_1 = require("./app.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -18,10 +19,11 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            forms_1.FormsModule
+            forms_1.FormsModule,
         ],
         declarations: [
-            app_component_1.AppComponent
+            app_component_1.AppComponent,
+            hero_detail_component_1.HeroDetailComponent
         ],
         bootstrap: [
             app_component_1.AppComponent

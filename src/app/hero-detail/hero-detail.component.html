@@ -1,0 +1,22 @@
+<!-- ici on place un ngIf pour gérer le cas où on a sélectionné aucun héros
+dans ce cas donc on n'affiche pas ce qui est entre les divs -->
+
+<div *ngIf="hero">
+  <h2>Détail de {{hero.name }}</h2>
+  <div><label>Identifiant :</label> {{hero.id}}</div>
+  <div>
+    <label>Nom :</label>
+    <!-- le ngModel est une directive permettant d'interagir avec
+    le module de formulaire. Pour faire simple, il faut simplement
+    comprendre ici  que ngModel permet de récupérer le contenu de l'input
+    envoyé par l'utilisateur -->
+
+    <!-- On va également analyser la propriété ngModel, qui a est en
+    "two-way databinding". cela veut dire qu'elle peut à la fois modifier le DOM
+  à partir des composants, mais aussi affecter les composants depuis le DOM.
+C" est notamment pour cela que quand l'utilisateur tape quelque chose, on peut y
+voir son résultat instantanément à l'écran. la donnée passe dans le composant,
+puis est restituée dans le DOM -->
+    <input [(ngModel)]="hero.name" placeholder="Nom" />
+  </div>
+</div>
