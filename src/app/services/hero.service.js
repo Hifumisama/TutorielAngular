@@ -5,9 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -44,53 +41,48 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var core_1 = require("@angular/core");
-var hero_service_1 = require("./services/hero.service");
-// le décorateur "component", permet de définir où notre template
-//sera ajouté, le template associé, mais aussi éventuellement
-// la feuille de style associée
-var AppComponent = (function () {
-    // on crée une fonction qui sera appelée ensuite dans le template
-    //du composant. on affecte sa variable d'entrée à une instance de Hero
-    function AppComponent(heroService) {
-        this.heroService = heroService;
-        this.title = "League des Héros";
+var mock_heroes_1 = require("../data/mock-heroes");
+/* lorsque on a besoin de créer un service, on cimporte
+le module injectable, et on y ajoute
+le décorateur correspondant*/
+var HeroService = (function () {
+    /* ici ce que fait le service consiste à récupérer le contenu du
+    fichier mock-heroes puis à le retourner sous la forme de la classe
+    Hero*/
+    function HeroService() {
     }
-    /* La fonction ngOnInit, est appelée dès l'initialisation de la page,
-    ce qui permet de gérer la récolte de données avant rendu*/
-    /*On peut également rajouter que la fonction est asynchrone, permettant
-    de récupérer les données, et ce dans un ordre précis, donc séquentiel.*/
-    AppComponent.prototype.ngOnInit = function () {
+    /* le problème étant que les données, si elles sont très nombreuses mettront un
+    certain temps à arriver, donc pour s'assurer que toutes les donnée soient prêtes,
+    on utilise une fonction Asynchronen tout simplement !
+    Pour cela on met le mot clé "async" devant la fonction qui sera asynchrone, puis
+    le mot clé "await" sur les fonctions ou valeurs qui seront retournées en asynchrone*/
+    HeroService.prototype.getHeroes = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        /* récupère les données provenant du mock-heroes, grâce au HeroService,
-                        le tout en asynchrone */
-                        _a = this;
-                        return [4 /*yield*/, this.heroService.getHeroes()];
-                    case 1:
-                        /* récupère les données provenant du mock-heroes, grâce au HeroService,
-                        le tout en asynchrone */
-                        _a.heroes = _b.sent();
-                        return [2 /*return*/];
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, mock_heroes_1.HEROES];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     };
-    AppComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
+    /*On peut également faire de l'asynchrone en utilisant le système de promises,
+    Le principe est strictement le même qu'async...await mais a une notation
+    un peu différente, d'ailleurs l'appel ne se fait plus avec async,
+    mais avec le mot clé "then" */
+    // Cette méthode est aussi là pour tester l'effet d'une latence de connexion
+    //internet
+    HeroService.prototype.getHeroesSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // Simule une latence de serveur de 2s de 2s
+            setTimeout(function () { return resolve(_this.getHeroes()); }, 2000);
+        });
     };
-    return AppComponent;
+    return HeroService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: "app/app.component.html",
-        styleUrls: ["app/app.component.css"],
-        providers: [hero_service_1.HeroService],
-    }),
-    __metadata("design:paramtypes", [hero_service_1.HeroService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+HeroService = __decorate([
+    core_1.Injectable()
+], HeroService);
+exports.HeroService = HeroService;
+//# sourceMappingURL=hero.service.js.map
