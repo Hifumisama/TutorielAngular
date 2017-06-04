@@ -1,10 +1,12 @@
-import { NgModule }      from '@angular/core';
-import { FormsModule }   from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule }               from '@angular/core';
+import { FormsModule }            from '@angular/forms';
+import { BrowserModule }          from '@angular/platform-browser';
 
-import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
-import { AppComponent }  from './app.component';
+import { HeroDetailComponent }    from "./component/hero-detail/hero-detail.component";
+import { HeroComponent }          from "./component/hero/hero.component";
+import { AppComponent }           from './app.component';
 
+import { HeroService }            from "./services/hero.service";
 
 
 @NgModule({
@@ -14,7 +16,11 @@ import { AppComponent }  from './app.component';
   ],
   declarations: [
     AppComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    HeroComponent,
+  ],
+  providers: [
+    HeroService,
   ],
   bootstrap: [
     AppComponent

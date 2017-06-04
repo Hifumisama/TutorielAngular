@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var hero_1 = require("../shared-elements/hero");
+var hero_1 = require("../../shared-elements/hero");
 var HeroDetailComponent = (function () {
     // dans la classe, on peut y définir des variables d'entrées, en utilisant le
     // décorateur nommé "Input", qui permet de récupérer des variables provenant
@@ -25,7 +25,7 @@ __decorate([
 HeroDetailComponent = __decorate([
     core_1.Component({
         selector: 'hero-detail',
-        templateUrl: "app/hero-detail/hero-detail.component.html"
+        templateUrl: "app/component/hero-detail/hero-detail.component.html"
     })
 ], HeroDetailComponent);
 exports.HeroDetailComponent = HeroDetailComponent;

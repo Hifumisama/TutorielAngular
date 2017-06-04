@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
-import { Hero } from '../shared-elements/hero';
+import { Hero } from '../../shared-elements/hero';
 
 @Component({
   selector: 'hero-detail',
-  templateUrl: "app/hero-detail/hero-detail.component.html"
+  templateUrl: "app/component/hero-detail/hero-detail.component.html"
 })
 // dans la classe, on peut y définir des variables d'entrées, en utilisant le
 // décorateur nommé "Input", qui permet de récupérer des variables provenant
