@@ -15,7 +15,6 @@ import { HeroService }                  from "../../services/hero.service";
   selector: 'my-heroes',
   templateUrl: "app/component/hero/hero.component.html",
   styleUrls: ["app/component/hero/hero.component.css"],
-
 })
 
 // app component, cette classe correspond en gros au main de l'application,

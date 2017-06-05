@@ -15,7 +15,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <my-heroes></my-heroes>\n  "
+        template: "\n    <h1>{{title}}</h1>\n    <!-- ici on indique via l'attribut router link, la route que\n    l'on veut d\u00E9signer, et la balise router outlet permet d'afficher\n    les composants cibles des routes, tout simplement ! -->\n    <nav>\n      <a routerLink=\"/dashboard\">Tableau de board</a>\n      <a routerLink=\"/heroes\">Liste des H\u00E9ros</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

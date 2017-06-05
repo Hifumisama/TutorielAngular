@@ -23,6 +23,14 @@ export class HeroService {
     return await HEROES;
   }
 
+  /* on se sert de la fonction getHeroes pour avoir la liste de tous les héros,
+  puis dans le tableau de héros, on y extrait le héros contenu dans
+  l'ID passé en paramètre*/
+
+  async getHero(id: number) {
+    const heroesArray = await this.getHeroes();
+    return heroesArray.find(hero => hero.id === id)
+  }
   /*On peut également faire de l'asynchrone en utilisant le système de promises,
   Le principe est strictement le même qu'async...await mais a une notation
   un peu différente, d'ailleurs l'appel ne se fait plus avec async,

@@ -44,51 +44,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var common_1 = require("@angular/common");
 var hero_service_1 = require("../../services/hero.service");
-var hero_1 = require("../../shared-elements/hero");
-require("rxjs/add/operator/switchMap");
-var HeroDetailComponent = (function () {
-    function HeroDetailComponent(heroService, route, location) {
+var DashboardComponent = (function () {
+    function DashboardComponent(heroService) {
         this.heroService = heroService;
-        this.route = route;
-        this.location = location;
     }
-    HeroDetailComponent.prototype.ngOnInit = function () {
+    DashboardComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                /* j'ai du mal à définir ce que ces fonctions font réellement maintenant...
-                Il semblerait que les Observables et les opérators permettent de récupérer
-                des flux de données, mais j'ai pas plus de précisions que cela */
-                this.route.params
-                    .switchMap(function (params) { return _this.heroService.getHero(+params['id']); })
-                    .subscribe(function (hero) { return _this.hero = hero; });
-                return [2 /*return*/];
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        // on récupère la liste de héros via le service getHeroes
+                        _a = this;
+                        return [4 /*yield*/, this.heroService.getHeroes()];
+                    case 1:
+                        // on récupère la liste de héros via le service getHeroes
+                        _a.heroes = _b.sent();
+                        // puis on y ressort les 4 premiers de la liste
+                        this.heroes = this.heroes.slice(1, 5);
+                        console.log(this.heroes);
+                        return [2 /*return*/];
+                }
             });
         });
     };
-    /* cette fonction  permet simplement de reculer dans la navigation de la page,
-    rien de plus, ce qui peut être bien pratique pour un bouton retour
-    par exemple °° */
-    HeroDetailComponent.prototype.goBack = function () {
-        this.location.back();
-    };
-    return HeroDetailComponent;
+    return DashboardComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", hero_1.Hero)
-], HeroDetailComponent.prototype, "hero", void 0);
-HeroDetailComponent = __decorate([
+DashboardComponent = __decorate([
     core_1.Component({
-        selector: 'hero-detail',
-        templateUrl: "app/component/hero-detail/hero-detail.component.html"
+        selector: 'dashboard',
+        templateUrl: 'app/component/dashboard/dashboard.component.html',
+        styleUrls: ["app/component/dashboard/dashboard.component.css"],
     }),
-    __metadata("design:paramtypes", [hero_service_1.HeroService,
-        router_1.ActivatedRoute,
-        common_1.Location])
-], HeroDetailComponent);
-exports.HeroDetailComponent = HeroDetailComponent;
-//# sourceMappingURL=hero-detail.component.js.map
+    __metadata("design:paramtypes", [hero_service_1.HeroService])
+], DashboardComponent);
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

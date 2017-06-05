@@ -1,0 +1,16 @@
+<h3>Tableau de board</h3>
+<div class="grid grid-pad">
+  <!-- Nous avous ici un cas intéressant de databinding
+en effet, on se sert de routerLink, pour récupérer
+un tableau contenant le nom de la route, ainsi que le
+paramètre voulu.
+On remarquera que leur ordre est le même qu'indiqué
+dans le fichier de routage...-->
+  <a *ngFor="let hero of heroes"
+   [routerLink]="['/detail', hero.id]"
+   class="col-1-4">
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>

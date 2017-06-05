@@ -66,6 +66,22 @@ var HeroService = (function () {
             });
         });
     };
+    /* on se sert de la fonction getHeroes pour avoir la liste de tous les héros,
+    puis dans le tableau de héros, on y extrait le héros contenu dans
+    l'ID passé en paramètre*/
+    HeroService.prototype.getHero = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var heroesArray;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getHeroes()];
+                    case 1:
+                        heroesArray = _a.sent();
+                        return [2 /*return*/, heroesArray.find(function (hero) { return hero.id === id; })];
+                }
+            });
+        });
+    };
     /*On peut également faire de l'asynchrone en utilisant le système de promises,
     Le principe est strictement le même qu'async...await mais a une notation
     un peu différente, d'ailleurs l'appel ne se fait plus avec async,
