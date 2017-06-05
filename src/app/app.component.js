@@ -8,14 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Justice League Tour';
+        this.title = 'Justice League';
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <!-- ici on indique via l'attribut router link, la route que\n    l'on veut d\u00E9signer, et la balise router outlet permet d'afficher\n    les composants cibles des routes, tout simplement ! -->\n    <nav>\n      <a routerLink=\"/dashboard\">Tableau de board</a>\n      <a routerLink=\"/heroes\">Liste des H\u00E9ros</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+        template: "\n    <h1>{{title}}</h1>\n    <!-- ici on indique via l'attribut router link, la route que\n    l'on veut d\u00E9signer, et la balise router outlet permet d'afficher\n    les composants cibles des routes, tout simplement ! -->\n    <nav>\n      <a routerLink=\"/dashboard\" routerLinkActive= Active>Tableau de board</a>\n      <a routerLink=\"/heroes\">Liste des H\u00E9ros</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+        styleUrls: ['app/app.component.css'],
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

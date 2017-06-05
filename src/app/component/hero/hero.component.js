@@ -44,6 +44,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var hero_service_1 = require("../../services/hero.service");
 // le décorateur "component", permet de définir où notre template
 //sera ajouté, le template associé, mais aussi éventuellement
@@ -51,7 +52,8 @@ var hero_service_1 = require("../../services/hero.service");
 var HeroComponent = (function () {
     // on crée une fonction qui sera appelée ensuite dans le template
     //du composant. on affecte sa variable d'entrée à une instance de Hero
-    function HeroComponent(heroService) {
+    function HeroComponent(router, heroService) {
+        this.router = router;
         this.heroService = heroService;
     }
     /* La fonction ngOnInit, est appelée dès l'initialisation de la page,
@@ -80,6 +82,9 @@ var HeroComponent = (function () {
     HeroComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };
+    HeroComponent.prototype.gotoDetail = function () {
+        this.router.navigate(['/detail', this.selectedHero.id]);
+    };
     return HeroComponent;
 }());
 HeroComponent = __decorate([
@@ -88,7 +93,8 @@ HeroComponent = __decorate([
         templateUrl: "app/component/hero/hero.component.html",
         styleUrls: ["app/component/hero/hero.component.css"],
     }),
-    __metadata("design:paramtypes", [hero_service_1.HeroService])
+    __metadata("design:paramtypes", [router_1.Router,
+        hero_service_1.HeroService])
 ], HeroComponent);
 exports.HeroComponent = HeroComponent;
 //# sourceMappingURL=hero.component.js.map

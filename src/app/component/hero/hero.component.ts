@@ -1,7 +1,7 @@
 import { Component, OnInit }            from '@angular/core';
 import { HeroDetailComponent }          from "../hero-detail/hero-detail.component";
+import { Router }                       from "@angular/router";
 import { Hero }                         from '../../shared-elements/hero';
-
 
 import { HeroService }                  from "../../services/hero.service";
 
@@ -40,6 +40,7 @@ export class HeroComponent implements OnInit {
   //du composant. on affecte sa variable d'entrée à une instance de Hero
 
   constructor(
+    private router: Router,
     private heroService: HeroService,
   ) { }
 
@@ -67,4 +68,9 @@ export class HeroComponent implements OnInit {
   onSelect(hero:Hero): void {
     this.selectedHero = hero;
   }
+
+  gotoDetail() : void {
+    this.router.navigate(['/detail',this.selectedHero.id]);
+  }
+
 }

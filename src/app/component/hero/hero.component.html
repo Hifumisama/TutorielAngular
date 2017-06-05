@@ -28,9 +28,15 @@ Grâce à cela on va également pouvoir émettre des valeurs aux composants pare
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
-<!-- Là on indique où se trouve le détail des héros, avec la balise associée.
-On remarque aussi que la balise accepte une entrée,
-donc on peut y faire passer des valeurs, dans notre cas il s'agit de la variable
-"hero" qui est fournie pour notre composant
- -->
-<hero-detail [hero]="selectedHero"></hero-detail>
+<!-- On ajoute ici un petit peu de code qui sert de lien vers
+la page du détail de héros et qui a pour rôle d'être une
+prévisualisation en gros...
+On remarque aussi l'opérateur "pipe" | qui est présent
+pour gérer des petites transformations de données, comme
+passer un mot en majusculle par exemple ^^.-->
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} est mon héros
+  </h2>
+  <button (click)="gotoDetail()">En savoir +</button>
+</div>

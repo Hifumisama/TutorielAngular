@@ -11,7 +11,8 @@ import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'hero-detail',
-  templateUrl: "app/component/hero-detail/hero-detail.component.html"
+  templateUrl: "app/component/hero-detail/hero-detail.component.html",
+  styleUrls: ["app/component/hero-detail/hero-detail.component.css"],
 })
 // dans la classe, on peut y définir des variables d'entrées, en utilisant le
 // décorateur nommé "Input", qui permet de récupérer des variables provenant
@@ -40,7 +41,7 @@ export class HeroDetailComponent implements OnInit{
   /* cette fonction  permet simplement de reculer dans la navigation de la page,
   rien de plus, ce qui peut être bien pratique pour un bouton retour
   par exemple °° */
-  
+
   goBack(): void {
     this.location.back();
   }

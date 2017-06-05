@@ -8,12 +8,13 @@ import { Component } from '@angular/core';
     l'on veut désigner, et la balise router outlet permet d'afficher
     les composants cibles des routes, tout simplement ! -->
     <nav>
-      <a routerLink="/dashboard">Tableau de board</a>
+      <a routerLink="/dashboard" routerLinkActive= Active>Tableau de board</a>
       <a routerLink="/heroes">Liste des Héros</a>
     </nav>
     <router-outlet></router-outlet>
-  `
+  `,
+  styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  title = 'Justice League Tour';
+  title = 'Justice League';
 }

@@ -8,22 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
-var router_1 = require("@angular/router");
+var app_routes_1 = require("./app-routes");
 var hero_detail_component_1 = require("./component/hero-detail/hero-detail.component");
 var hero_component_1 = require("./component/hero/hero.component");
 var dashboard_component_1 = require("./component/dashboard/dashboard.component");
 var app_component_1 = require("./app.component");
 var hero_service_1 = require("./services/hero.service");
-/* on définit ici les routes de l'application :
-Path étant l'adresse URL correspondante, et component,
-étant le composant cible.*/
-/* On peut tout à fait rediriger les utilisateurs via les url,
-Ici on le fait pour gérer la page d'accueil, qui sur une URL vide
-redirige directement vers dashboard */
-/* Un peu plus bas on constate que la route menant vers le détail
-des héros, dispose d'un paramètre, et qu'il porte le nom de "id"
-Cela va nous permettre dans notre cas de cibler un élément bien particulier
-pour l'afficher par la suite. */
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,25 +24,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            router_1.RouterModule.forRoot([
-                {
-                    path: '',
-                    redirectTo: '/dashboard',
-                    pathMatch: 'full',
-                },
-                {
-                    path: 'heroes',
-                    component: hero_component_1.HeroComponent,
-                },
-                {
-                    path: 'dashboard',
-                    component: dashboard_component_1.DashboardComponent,
-                },
-                {
-                    path: 'detail/:id',
-                    component: hero_detail_component_1.HeroDetailComponent,
-                }
-            ])
+            app_routes_1.AppRouteModule,
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -64,7 +36,7 @@ AppModule = __decorate([
             hero_service_1.HeroService,
         ],
         bootstrap: [
-            app_component_1.AppComponent
+            app_component_1.AppComponent,
         ]
     })
 ], AppModule);
